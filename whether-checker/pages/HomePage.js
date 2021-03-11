@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import GetWeather from '../components/WeatherData'
 import { View, Text, StyleSheet, FlatList, Button } from 'react-native'
 
 export default function HomePage(props) {
 
-    const availbeMealsProducts = useSelector(state => state.products.products)
+    const temp = useSelector(state => state.weather.temp)
+    const availableProducts = useSelector(state => state.products.products.filter(p => temp >= p.temp.min && temp <= p.temp.max))
 
     const renderGridItem = (itemData) => {
 
@@ -45,7 +46,7 @@ export default function HomePage(props) {
                 <GetWeather />
                 <FlatList
                     keyExtractor={(item, index) => item.id}
-                    data={availbeMealsProducts}
+                    data={availableProducts}
                     renderItem={renderGridItem}
                     numColumns={3}
                 ></FlatList>

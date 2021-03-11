@@ -1,22 +1,18 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Button } from 'react-native';
-
 import ProductNavigation from './navigation/ProductNavigtion'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
-import { useScreens } from 'react-native-screens'
 
 import producteReducer from './store/reducers/ProductReducer';
-
-// useScreens()
+import weatherReducer from './store/reducers/WeatherReducer';
 
 const rootReducer = combineReducers({
   products: producteReducer,
-
+  weather: weatherReducer
 })
 
-console.log('rootReducer:', rootReducer)
 const store = createStore(rootReducer)
 
 export default function App() {

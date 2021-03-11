@@ -1,11 +1,18 @@
 import axios from "axios";
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
+import { useSelector, useDispatch } from 'react-redux'
+import { setTemp } from "../store/actions/WeatherActions";
 
 export default function GetWeather() {
+    const dispatch = useDispatch()
     const [City, onChangeCity] = React.useState('Insert City Name');
-    const [Country, onChangeCountry] = React.useState('Country  ( IL )');
-    const [temp, setTemp] = useState("")
+    const [Country, onChangeCountry] = React.useState('');
+    // const [temp, setTemp] = useState("")
+
+    const temp = useSelector(state => state.weather.temp)
+    const dispatchSetTemp = (temp) => dispatch(setTemp(temp))
+
     const [city, setCity] = useState("")
     const [country, setCountry] = useState("")
     const [date, setDate] = useState("")
@@ -18,7 +25,7 @@ export default function GetWeather() {
             url: `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=3743c534d32b18ece300ecfcfbdb0fab`,
         })
             .then((response) => {
-                setTemp(response.data.main.temp - 273.15)
+                dispatchSetTemp(response.data.main.temp - 273.15)
                 setCity(response.data.name)
                 setCountry(response.data.sys.country)
                 setDate(response.data.dt * 1000)
