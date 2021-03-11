@@ -1,10 +1,3 @@
-// import ProductsData from './whether-checker/models/ProductsData'
-import ProductsData from './whether-checker/assets/img/winter/coat.jpg'
-
-// export const Data =[
-//     new ProductsData(id:'1',name:'Coat',season:'Winter',img:'')
-// ]
-
 const data ={
 
     products:[
