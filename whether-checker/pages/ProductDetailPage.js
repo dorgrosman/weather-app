@@ -10,7 +10,6 @@ export default function ProductDetailPage(props) {
 
   const availableProductsProducts = useSelector(state => state.products.products)
   const favoriteProducts = useSelector(state => state.products.favoriteProducts)
-  console.log('favoriteProducts:', favoriteProducts)
   const dispatch = useDispatch()
 
   const productId = props.navigation.getParam('productId')
@@ -32,6 +31,14 @@ export default function ProductDetailPage(props) {
   return (
     <View style={styles.screen}>
       <View style={styles.card}>
+        <View>
+          <HeaderButtons HeaderButtonComponent={HeaderButton} />
+          <Ionicons
+            title="Favorite"
+            name={isFavorite ? 'ios-star' : 'ios-star-outline'}
+            size={25}
+            onPress={toggleFavorite} />
+        </View>
         <Text>Product: {selectedProduct.name}</Text>
         <Text>Season: {selectedProduct.season}</Text>
         <Text>Description: {selectedProduct.description}</Text>
@@ -52,20 +59,12 @@ ProductDetailPage.navigationOptions = navigationData => {
   const productName = navigationData.navigation.getParam('productName')
   const toggleFavorite = navigationData.navigation.getParam('toggleFav');
   const isFavorite = navigationData.navigation.getParam('isFav');
-  console.log('isFavorite:', isFavorite)
 
   return {
     headerTitle: productName,
-    headerRight: (
-      <View>
-        <HeaderButtons HeaderButtonComponent={HeaderButton} />
-        <Ionicons 
-        title="Favorite"
-        name={isFavorite ? 'ios-star' : 'ios-star-outline'} 
-        size={25} 
-        onPress={toggleFavorite} />
-      </View>
-    )
+    // headerRight: (
+      
+    // )
   };
 };
 

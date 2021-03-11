@@ -7,7 +7,6 @@ export default function FavoritePage(props) {
     const favProducts = useSelector(state => state.products.favoriteProducts)
     const renderGridItem = (itemData) => {
         return <View style={styles.screen} onPress={() => {
-            console.log('itemData.item.id:', itemData.item.id)
             props.navigation.navigate({
                 routeName: 'ProductDetails',
                 params: {
