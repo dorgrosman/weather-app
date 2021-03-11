@@ -1,11 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet, FlatList, Button, Image } from 'react-native'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function FavoritePage(props) {
-
-    const favProducts = useSelector(state => state.products.favoriteProductes)
-    const [value, onChangeText] = React.useState('');
+    
+    const favProducts = useSelector(state => state.products.favoriteProducts)
     const renderGridItem = (itemData) => {
 
         return <View style={styles.screen} onPress={() => {

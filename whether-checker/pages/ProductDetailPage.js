@@ -4,21 +4,28 @@ import { HeaderButtons } from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton'
 import { Ionicons } from '@expo/vector-icons'
 import { useSelector, useDispatch } from 'react-redux'
-import { toggleFaovrite } from '../store/actions/ProductAction'
+import { toggleFavorite } from '../store/actions/ProductAction'
 
 export default function ProductDetailPage(props) {
 
-  const availbeProductsProducts = useSelector(state => state.products.products)
+  const availableProductsProducts = useSelector(state => state.products.products)
+  const favoriteProducts = useSelector(state => state.products.favoriteProducts)
+  console.log('favoriteProducts:', favoriteProducts)
   const dispatch = useDispatch()
+
+  // const activationEvents = useSelector(state => state.products.activationEvents)
+  // const dispatchToggleFavorite = (activationEvents) => dispatch(toggleFavorite(activationEvents))
+  
+
   const productId = props.navigation.getParam('productId')
   const currentProductIsFavorite = useSelector(state =>
 
-    state.products.favoriteProductes.some(product => product.id === productId)
+    state.products.favoriteProducts.some(product => product.id === productId)
   );
-  const selectedProduct = availbeProductsProducts.find(product => product.id === productId)
+  const selectedProduct = availableProductsProducts.find(product => product.id === productId)
 
   const toggleFavoriteHandler = useCallback(() => {
-    dispatch(toggleFaovrite(productId))
+    dispatch(toggleFavorite(productId))
   }, [dispatch, productId])
 
   useEffect(() => {
@@ -51,13 +58,18 @@ ProductDetailPage.navigationOptions = navigationData => {
   const productName = navigationData.navigation.getParam('productName')
   const toggleFavorite = navigationData.navigation.getParam('toggleFav');
   const isFavorite = navigationData.navigation.getParam('isFav');
+  console.log('isFavorite:', isFavorite)
 
   return {
     headerTitle: productName,
     headerRight: (
       <View>
         <HeaderButtons HeaderButtonComponent={HeaderButton} />
-        <Ionicons title="Favorite" name={isFavorite ? 'ios-star' : 'ios-star-outline'} size={25} onPress={toggleFavorite} />
+        <Ionicons 
+        title="Favorite"
+        name={isFavorite ? 'ios-star' : 'ios-star-outline'} 
+        size={25} 
+        onPress={toggleFavorite} />
       </View>
     )
   };

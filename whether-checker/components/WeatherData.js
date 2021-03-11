@@ -6,13 +6,11 @@ import { setTemp } from "../store/actions/WeatherActions";
 
 export default function GetWeather() {
     const dispatch = useDispatch()
-    const [City, onChangeCity] = React.useState('Insert City Name');
-    const [Country, onChangeCountry] = React.useState('');
-    // const [temp, setTemp] = useState("")
-
+    
     const temp = useSelector(state => state.weather.temp)
     const dispatchSetTemp = (temp) => dispatch(setTemp(temp))
-
+ 
+    const [City, onChangeCity] = useState('Insert City Name');
     const [city, setCity] = useState("")
     const [country, setCountry] = useState("")
     const [date, setDate] = useState("")
@@ -30,7 +28,6 @@ export default function GetWeather() {
                 setCountry(response.data.sys.country)
                 setDate(response.data.dt * 1000)
                 setDesc(response.data.weather[0].main)
-
             }).catch((error) => {
                 console.error(error);
             });
@@ -53,7 +50,7 @@ export default function GetWeather() {
                 <Button
                     title='Get Weather'
                     onPress={() => {
-                        getWeatherData(City, Country)
+                        getWeatherData(City)
                     }}
                 />
             </View>

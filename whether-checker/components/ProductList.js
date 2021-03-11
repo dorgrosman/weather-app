@@ -42,14 +42,3 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 })
-
-
-
-// <View>
-//     <FlatList
-//     keyExtractor={(item, index) => item.id}
-//     data={products}
-//     renderItem={renderGridItem}
-//     numColumns={2}
-//  ></FlatList>
-// </View>

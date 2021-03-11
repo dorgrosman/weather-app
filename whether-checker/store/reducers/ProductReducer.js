@@ -3,25 +3,25 @@ import { TOGGLE_FAVORITE } from './../actions/ProductAction';
 
 const initialState = {
     products: data.products,
-    favoriteProductes: [],
-    events: [],
+    favoriteProducts: [],
+    activationEvents: [],
 }
 
-const productReducer = (state = initialState, action) => {
+const producteReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case TOGGLE_FAVORITE:
-            const existingIndex = state.favoriteProductes.findIndex(
-                product => product.id === action.productId)
-            if (existingIndex >= 0) {
-                const updateFavProducte = [...state.favoriteProductes]
-                updateFavProducte.splice(existingIndex, 1)
+            const updatedEvents = [...state.activationEvents]
+            const selectedProduct = state.products.find(p => p.id == action.productId)
+            const isExisted = state.favoriteProducts.includes(selectedProduct)
 
-                return { ...state, favoriteProductes: updateFavProducte }
-                // return { ...state, events: [...events, {action: 'clicked fav', timestamp: Date.now()}], favoriteProductes: updateFavProducte }
+            if (isExisted) {
+                const updatedFavProducts = state.favoriteProducts.filter(p => p.id != action.productId)
+                updatedEvents.push({ product: selectedProduct, action: 'Unclicked favorite', timestamp: Date.now() })
+                return { ...state, favoriteProducts: updatedFavProducts, activationEvents: updatedEvents }
             } else {
-                const product = state.products.find(product => product.id === action.productId)
-                return { ...state, favoriteProductes: state.favoriteProductes.concat(product) }
+                updatedEvents.push({ product: selectedProduct, action: 'Clicked favorite', timestamp: Date.now() })
+                return { ...state, favoriteProducts: state.favoriteProducts.concat(selectedProduct), activationEvents: updatedEvents }
             }
         default:
             return state
@@ -29,4 +29,4 @@ const productReducer = (state = initialState, action) => {
 
 }
 
-export default productReducer
+export default producteReducer
