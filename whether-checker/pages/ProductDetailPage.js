@@ -31,14 +31,7 @@ export default function ProductDetailPage(props) {
   return (
     <View style={styles.screen}>
       <View style={styles.card}>
-        <View>
-          <HeaderButtons HeaderButtonComponent={HeaderButton} />
-          <Ionicons
-            title="Favorite"
-            name={isFavorite ? 'ios-star' : 'ios-star-outline'}
-            size={25}
-            onPress={toggleFavorite} />
-        </View>
+
         <Text>Product: {selectedProduct.name}</Text>
         <Text>Season: {selectedProduct.season}</Text>
         <Text>Description: {selectedProduct.description}</Text>
@@ -62,9 +55,16 @@ ProductDetailPage.navigationOptions = navigationData => {
 
   return {
     headerTitle: productName,
-    // headerRight: (
-      
-    // )
+    headerRight: (
+      <View>
+        <HeaderButtons HeaderButtonComponent={HeaderButton} />
+        <Ionicons
+          title="Favorite"
+          name={isFavorite ? 'ios-star' : 'ios-star-outline'}
+          size={25}
+          onPress={toggleFavorite} />
+      </View>
+    )
   };
 };
 
