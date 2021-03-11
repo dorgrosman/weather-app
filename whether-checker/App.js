@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Button } from 'react-native';
+import { StyleSheet } from 'react-native';
 import ProductNavigation from './navigation/ProductNavigtion'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'

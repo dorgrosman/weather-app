@@ -5,19 +5,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setTemp } from "../store/actions/WeatherActions";
 
 export default function GetWeather() {
+
+    const [City, onChangeCity] = useState('Insert City Name');
+    const [city, setCity] = useState('')
+    const [country, setCountry] = useState('')
+    const [date, setDate] = useState('')
+    const [desc, setDesc] = useState('')
     const dispatch = useDispatch()
-    
     const temp = useSelector(state => state.weather.temp)
     const dispatchSetTemp = (temp) => dispatch(setTemp(temp))
- 
-    const [City, onChangeCity] = useState('Insert City Name');
-    const [city, setCity] = useState("")
-    const [country, setCountry] = useState("")
-    const [date, setDate] = useState("")
-    const [desc, setDesc] = useState("")
 
     const getWeatherData = (city, country) => {
-
         axios({
             method: 'GET',
             url: `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=3743c534d32b18ece300ecfcfbdb0fab`,
@@ -46,7 +44,6 @@ export default function GetWeather() {
                     onChangeText={text => onChangeCity(text)}
                     value={City}
                 />
-
                 <Button
                     title='Get Weather'
                     onPress={() => {
@@ -63,6 +60,5 @@ const styles = StyleSheet.create({
         height: 250,
         width: 200,
         fontSize: 30,
-
     },
 })

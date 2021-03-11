@@ -6,7 +6,7 @@ const data = {
             temp: { min: -10, max: 10 },
             name: 'Coat',
             season: 'Winter',
-            color: '#f54242',
+            color: '#f54215',
             description: 'The temperatures are low so to take a good coat.',
             img: 'https://konimboimages.s3.amazonaws.com/system/photos/4402347/large/60f1ea658265fc2ecaefb37e567c24a1.jpg'
         },

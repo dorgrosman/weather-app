@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import GetWeather from '../components/WeatherData'
 import { View, Text, StyleSheet, FlatList, Button } from 'react-native'
@@ -9,7 +9,6 @@ export default function HomePage(props) {
     const availableProducts = useSelector(state => state.products.products.filter(p => temp >= p.temp.min && temp <= p.temp.max))
 
     const renderGridItem = (itemData) => {
-
         return <View style={styles.screen} onPress={() => {
             props.navigation.navigate({
                 routeName: 'ProductDetails',
@@ -36,10 +35,7 @@ export default function HomePage(props) {
                 </View>
             </View>
         </View>
-
-
     }
-
     return (
         <View >
             <View style={styles.screen}>
@@ -53,7 +49,6 @@ export default function HomePage(props) {
             </View>
         </View>
     )
-
 }
 
 const styles = StyleSheet.create({

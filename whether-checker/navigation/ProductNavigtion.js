@@ -9,9 +9,6 @@ import HomePage from '../pages/HomePage'
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/Colors';
 
-
-// const [history, setHistory] = useState("")
-
 const ProductNavigation = createStackNavigator({
   Home: HomePage,
   ProductDetails: ProductDetailPage

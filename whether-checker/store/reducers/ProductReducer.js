@@ -26,7 +26,6 @@ const producteReducer = (state = initialState, action) => {
         default:
             return state
     }
-
 }
 
 export default producteReducer

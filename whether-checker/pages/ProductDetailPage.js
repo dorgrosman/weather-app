@@ -13,17 +13,11 @@ export default function ProductDetailPage(props) {
   console.log('favoriteProducts:', favoriteProducts)
   const dispatch = useDispatch()
 
-  // const activationEvents = useSelector(state => state.products.activationEvents)
-  // const dispatchToggleFavorite = (activationEvents) => dispatch(toggleFavorite(activationEvents))
-  
-
   const productId = props.navigation.getParam('productId')
   const currentProductIsFavorite = useSelector(state =>
-
     state.products.favoriteProducts.some(product => product.id === productId)
   );
   const selectedProduct = availableProductsProducts.find(product => product.id === productId)
-
   const toggleFavoriteHandler = useCallback(() => {
     dispatch(toggleFavorite(productId))
   }, [dispatch, productId])
@@ -53,8 +47,8 @@ export default function ProductDetailPage(props) {
     </View>
   )
 }
-ProductDetailPage.navigationOptions = navigationData => {
 
+ProductDetailPage.navigationOptions = navigationData => {
   const productName = navigationData.navigation.getParam('productName')
   const toggleFavorite = navigationData.navigation.getParam('toggleFav');
   const isFavorite = navigationData.navigation.getParam('isFav');

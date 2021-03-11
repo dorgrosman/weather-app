@@ -1,23 +1,18 @@
 import React from 'react'
-import { View, Text, StyleSheet, FlatList, Button, Image } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { View, Text, StyleSheet, FlatList } from 'react-native'
+import {  useSelector } from 'react-redux'
 
-export default function HistoryPage(props) {
+
+export default function HistoryPage() {
 
     const activationEvents = useSelector(state => state.products.activationEvents)
-    const dispatch = useDispatch()
-
-
-
-    console.log('activationEvents:', activationEvents)
-
     const renderGridItem = (itemData) => {
 
         return <View style={styles.screen} >
-
             <View style={styles.card}>
                 <Text style={{fontSize:20}}>Action: {itemData.item.action}</Text>
-                <Text>Time: {new Date(itemData.item.timestamp).toUTCString()}</Text>
+                <Text>Time: {new Date(itemData.item.timestamp).toLocaleTimeString()}</Text>
+                <Text>Date: {new Date(itemData.item.timestamp).toLocaleDateString()}</Text>
                 <View style={{ backgroundColor: itemData.item.product.color, borderRadius: 5, padding: 10 }}>
                     <Text style={styles.title}>{itemData.item.product.name}</Text>
                     <Text >{itemData.item.product.favorite}</Text>
