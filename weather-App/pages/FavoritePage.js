@@ -40,7 +40,7 @@ export default function FavoritePage(props) {
                 keyExtractor={(item, index) => item.id}
                 data={favProducts}
                 renderItem={renderGridItem}
-                numColumns={3}
+                numColumns={1}
             ></FlatList>
         </View>
     )

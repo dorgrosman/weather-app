@@ -45,6 +45,7 @@ export default function ProductDetailPage(props) {
           source={{ uri: selectedProduct.img }}
         />
         <Button
+        // style={{}}
           title="Go Back" onPress={() => {
             props.navigation.goBack()
           }} />
@@ -70,8 +71,8 @@ const styles = StyleSheet.create({
   },
   card: {
     shadowColor: 'black',
-    width: 400,
-    height: 400,
+    width: 250,
+    height: 425,
     shadowOffset: { width: 0, height: 5 },
     shadowRadius: 6,
     shadowOpacity: 0.26,

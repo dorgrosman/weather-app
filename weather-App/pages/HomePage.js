@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import GetWeather from '../components/WeatherData'
-import { View, Text, StyleSheet, FlatList, Button } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Button ,TouchableOpacity } from 'react-native'
 
 export default function HomePage(props) {
 
@@ -37,31 +37,24 @@ export default function HomePage(props) {
         </View>
     }
     return (
-        <View >
             <View style={styles.screen}>
                 <GetWeather />
                 <FlatList
                     keyExtractor={(item, index) => item.id}
                     data={availableProducts}
                     renderItem={renderGridItem}
-                    numColumns={3}
+                    numColumns={1}
                 ></FlatList>
             </View>
-        </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    bgImage: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'flex-end',
-    },
+    // container: {
+    //     display: 'flex',
+    //     flexDirection: 'row',
+    //     justifyContent: 'center',
+    // },
     screen: {
         flex: 1,
         padding: 10,
